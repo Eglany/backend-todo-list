@@ -1,8 +1,8 @@
 const taskService = require('../service/taskService');
 
 const getAll = async (_request, response) => {
-  const tasks = await taskService.getAll();
-  return response.status(tasks).json(tasks);
+  const [tasks] = await taskService.getAll();
+  return response.status(200).json(tasks);
 };
 
 const create = async (request, response) => {

@@ -8,9 +8,9 @@ const getAll = async () => {
 
 const create = async (task, status) => {
   const query = 'INSERT INTO tasks (task, status) VALUES (?,?)';
-  const createTaks = await connection.execute(query, [task, status]);
+  const [{ insertId }] = await connection.execute(query, [task, status]);
 
-  return createTaks;
+  return insertId;
 };
 
 module.exports = { create, getAll };
