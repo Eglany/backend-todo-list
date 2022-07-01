@@ -8,4 +8,4 @@ const connection = mysql.createPool({
   database: 'TodoList',
 });
 
-export default connection;
+module.exports = connection;
