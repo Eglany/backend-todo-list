@@ -1,3 +1,4 @@
+const rescue = require('express-rescue');
 const express = require('express');
 const cors = require('cors');
 const taskController = require('./controller/taskController');
@@ -12,6 +13,6 @@ app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
 
 app.get('/', (_request, response) => response.status(200).json({ message: 'Backend TO-DO list ' }));
 
-app.get('/task', taskController.getAll);
-app.post('/task', taskController.create);
-app.delete('/task/:id', taskController.destroy);
+app.get('/task', rescue(taskController.getAll));
+app.post('/task', rescue(taskController.create));
+app.delete('/task/:id', rescue(taskController.destroy));
