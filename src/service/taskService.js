@@ -7,9 +7,12 @@ const getAll = async () => {
 };
 
 const create = async (task, status) => {
-  const createTask = await taskModel.create(task, status);
-
-  return createTask;
+  const id = await taskModel.create(task, status);
+  return { id, task, status };
 };
 
-module.exports = { getAll, create };
+const destroy = async (id) => {
+  await taskModel.destroy(id);
+};
+
+module.exports = { getAll, create, destroy };

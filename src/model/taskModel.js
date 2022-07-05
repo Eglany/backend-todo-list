@@ -13,4 +13,9 @@ const create = async (task, status) => {
   return insertId;
 };
 
-module.exports = { create, getAll };
+const destroy = async (id) => {
+  const query = 'DELETE FROM tasks WHERE id = ?;';
+  await connection.execute(query, [id]);
+};
+
+module.exports = { create, getAll, destroy };
